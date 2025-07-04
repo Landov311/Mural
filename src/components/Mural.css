@@ -1,0 +1,22 @@
+.mural-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;      /* Ajusta al tamaño que necesites */
+  margin: 0 auto;
+}
+
+.mural-bg {
+  width: 100%;
+  display: block;
+}
+
+.graffiti {
+  position: absolute;
+  width: 10%;             /* Escala del icono */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.graffiti:hover {
+  transform: scale(1.1);
+}
