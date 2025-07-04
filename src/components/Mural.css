@@ -1,22 +1,132 @@
-.mural-container {
-  position: relative;
+/* Añade estos estilos a tu Mural.css */
+.title-container {
+  position: fixed;
+  top: -30px;
+  left: 0;
   width: 100%;
-  max-width: 1000px;      /* Ajusta al tamaño que necesites */
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.graffiti-title {
+  font-family: 'Bebas Neue', 'Impact', sans-serif; 
+  font-size: 3.5rem;
+  color: #ff4756d8; /* Rojo como alerta */
+  text-shadow: 
+    4px 4px 0 rgba(0,0,0,0.3),
+    8px 8px 0 rgba(0,0,0,0.1);
+  letter-spacing: 5px;
+  background: linear-gradient(to right, #2f35428c, #57606f);
+  padding: 15px 10px;
+  border-radius: 2px;
+  border: 3px solid #ffffff84;
+  box-shadow: 
+    0 0 0 5px #ff4756,
+    0 10px 25px rgb(0, 0, 0);
+  text-transform: uppercase;
+  position: relative;
+  animation: shake .5s cubic-bezier(.36,.07,.19,.97) infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+.graffiti-title::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px dashed #ff4757;
+  border-radius: 5px;
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 10px rgba(71, 224, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(141, 71, 255, 0.8);
+  }
+}
+
+
+.mural-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .mural-bg {
   width: 100%;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: grayscale(20%) contrast(1.1);
+}
+
+.graffiti-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
 }
 
 .graffiti {
-  position: absolute;
-  width: 10%;             /* Escala del icono */
+  width: 220px;
+  height: 220px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  z-index: 2;
 }
 
 .graffiti:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.graffiti-label {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.graffiti-label.visible {
+  opacity: 1;
+}
+
+/* Efecto de marcador en el suelo */
+.graffiti-container::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  width: 2px;
+  height: 15px;
+  background-color: #ff4757;
+  z-index: 1;
 }

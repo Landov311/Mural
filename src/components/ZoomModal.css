@@ -1,14 +1,75 @@
 .modal-backdrop {
   position: fixed;
-  inset: 0;                       /* top:0 left:0 right:0 bottom:0 */
-  background: rgba(0, 0, 0, 0.8);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 
-.modal-content img {
+.modal-content {
+  display: flex;
   max-width: 90vw;
   max-height: 90vh;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-container {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.zoomed-image {
+  max-height: 80vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.data-panel {
+  flex: 1;
+  padding: 25px;
+  background: #f8f8f8;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.data-panel h3 {
+  color: #d63031;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.data-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.data-panel li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column;
+    max-height: 95vh;
+  }
+  
+  .data-panel {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    max-height: 30vh;
+  }
 }
